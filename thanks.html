@@ -104,6 +104,13 @@ main { min-height: 100vh; display: grid; place-items: center; padding: 48px 0; }
       <a class="btn btn-ghost" href="/">Back to the site</a>
     </div>
   </div>
+  <div class="card" id="ck" hidden>
+    <span class="label">One more step</span>
+    <img src="cover-unlit.jpg" alt="Cover of Unlit by Kira Ashvale" width="150" height="225">
+    <h1>Check your inbox.</h1>
+    <p>Kira just sent you an email. Click the button inside to confirm, and your free copy of <em>Unlit</em> will be waiting. Can't see it? Look in Promotions or Spam.</p>
+    <div class="row"><a class="btn btn-ghost" href="/">Back to the site</a></div>
+  </div>
   <div class="card" id="ct" hidden>
     <span class="label">Message sent</span>
     <h1>Thank you.</h1>
@@ -112,9 +119,11 @@ main { min-height: 100vh; display: grid; place-items: center; padding: 48px 0; }
   </div>
 </div></main>
 <script>
-if (new URLSearchParams(location.search).get("f") === "contact") {
+const f = new URLSearchParams(location.search).get("f");
+const show = { contact: "ct", check: "ck" }[f];
+if (show) {
   document.getElementById("nl").hidden = true;
-  document.getElementById("ct").hidden = false;
+  document.getElementById(show).hidden = false;
 }
 </script>
 </body>
