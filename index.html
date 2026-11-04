@@ -5,6 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kira Ashvale</title>
 <meta name="description" content="Kira Ashvale writes snowbound werewolf romance: rejected mates, fated bonds and alphas who have to earn it. Start The Midwinter Packs with Book 1 free.">
+<link rel="canonical" href="https://kiraashvale.netlify.app/">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0b161c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kira Ashvale">
+<meta property="og:url" content="https://kiraashvale.netlify.app/">
+<meta property="og:title" content="Kira Ashvale · The Midwinter Packs">
+<meta property="og:description" content="Snowbound werewolf romance: rejected mates, fated bonds and alphas who have to earn it. Get the novella Unlit free.">
+<meta property="og:image" content="https://kiraashvale.netlify.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A lit iron lantern hanging from a snowy spruce bough, with the words Kira Ashvale, The Midwinter Packs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kira Ashvale · The Midwinter Packs">
+<meta name="twitter:description" content="Snowbound werewolf romance. Rejected mates. Alphas who earn it. Get Unlit free.">
+<meta name="twitter:image" content="https://kiraashvale.netlify.app/og-image.jpg">
+<!-- GOOGLE SEARCH CONSOLE: verification meta tag goes here -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Kira Ashvale","url":"https://kiraashvale.netlify.app/","jobTitle":"Author","sameAs":["https://www.tiktok.com/@kiraashvale.author","https://www.instagram.com/kiraashvale.author/","https://www.youtube.com/@kiraashvale.author","https://kiraashvale1.gumroad.com/"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -229,6 +249,34 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
   .section { padding-block: 60px; }
   .nav { gap: 16px; }
 }
+
+/* Join the list + contact */
+.join { background: var(--surface); border-block: 1px solid var(--line); }
+.join .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 56px; align-items: center; }
+.join-cover { display: flex; gap: 28px; align-items: center; min-width: 0; }
+.join-cover img { width: 132px; height: auto; flex: none; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 3px; box-shadow: 0 18px 40px -18px rgba(10, 25, 32, .55); }
+.join-cover h2 { font-size: var(--step-3); }
+.join-cover p { margin: 10px 0 0; color: var(--muted); }
+.form { display: grid; gap: 14px; min-width: 0; }
+.form .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.field input, .field select, .field textarea {
+  font: inherit; color: var(--ink); background: var(--bg); width: 100%;
+  border: 1px solid var(--line); border-radius: 2px; padding: 12px 14px;
+}
+.field textarea { min-height: 128px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+.form .btn { justify-self: start; cursor: pointer; }
+.form .fineprint { margin: 0; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.contact .wrap { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; }
+@media (max-width: 820px) {
+  .join .wrap, .contact .wrap { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .form .row { grid-template-columns: minmax(0, 1fr); }
+  .join-cover { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .join-cover img { width: 110px; }
+}
 </style>
 <style>html,body{margin:0;padding:0}</style>
 </head>
@@ -240,6 +288,7 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
     <nav class="nav" aria-label="Sections">
       <a href="#books">Books</a>
       <a href="#audiobooks">Audiobooks</a>
+      <a href="#join">Free book</a>
       <a href="#about">About</a>
       <a href="#follow">Follow</a>
     </nav>
@@ -295,6 +344,29 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
   </div>
 </section>
 
+<section class="section join" id="join" aria-labelledby="join-title">
+  <div class="wrap">
+    <div class="join-cover">
+      <img src="cover-unlit.jpg" alt="Cover of Unlit by Kira Ashvale" loading="lazy" width="132" height="198">
+      <div>
+        <span class="label">Free novella · Midwinter Packs 2.5</span>
+        <h2 id="join-title">Get <em>Unlit</em> free, and hear first when each lantern lights</h2>
+        <p>Join the Midwinter list for the free novella, launch-day alerts for every book, and the occasional bonus scene. No spam, ever. Leave whenever you like.</p>
+      </div>
+    </div>
+    <form class="form" name="newsletter" method="POST" action="/thanks.html?f=newsletter" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="newsletter">
+      <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="row">
+        <div class="field"><label for="nl-name">First name</label><input id="nl-name" name="first_name" autocomplete="given-name"></div>
+        <div class="field"><label for="nl-email">Email</label><input id="nl-email" name="email" type="email" required autocomplete="email"></div>
+      </div>
+      <button class="btn btn-primary" type="submit">Send me Unlit</button>
+      <p class="fineprint">For adult readers. Your email is only used for Kira Ashvale book news.</p>
+    </form>
+  </div>
+</section>
+
 <section class="section about" id="about" aria-labelledby="about-title">
   <div class="wrap">
     <div>
@@ -310,10 +382,35 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
   </div>
 </section>
 
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:0">
+      <span class="label">Get in touch</span>
+      <h2 id="contact-title">Write to Kira</h2>
+      <p>Readers, reviewers, bloggers and booktokers are all welcome. Ask for an advance copy, a collaboration, or just tell Kira which wolf you're rooting for.</p>
+    </div>
+    <form class="form" name="contact" method="POST" action="/thanks.html?f=contact" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="row">
+        <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" required autocomplete="name"></div>
+        <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" required autocomplete="email"></div>
+      </div>
+      <div class="field"><label for="c-reason">I'm a</label>
+        <select id="c-reason" name="reason">
+          <option>Reader</option><option>Reviewer or blogger</option><option>BookTok / Bookstagram creator</option><option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" name="message" required></textarea></div>
+      <button class="btn btn-primary" type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <span>© 2026 Kira Ashvale. All rights reserved.</span>
-    <span>Ebooks available on Google Play Books.</span>
+    <span>Ebooks available on Google Play Books. <a href="#contact">Contact</a></span>
   </div>
 </footer>
 
@@ -528,5 +625,6 @@ renderFreebar(); renderHero(); renderBooks(); renderAudio(); renderSocials();
 })();
 </script>
 
+<!-- CLOUDFLARE WEB ANALYTICS: beacon script goes here -->
 </body>
 </html>
