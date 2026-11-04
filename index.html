@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kira Ashvale</title>
+<meta name="description" content="Kira Ashvale writes snowbound werewolf romance: rejected mates, fated bonds and alphas who have to earn it. Start The Midwinter Packs with Book 1 free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a lantern-lit night hero, then the series as a row of lanterns that light up as each book goes live. */
+:root {
+  --bg: #eef2f4;
+  --surface: #f8fafb;
+  --ink: #14232a;
+  --muted: #55676f;
+  --line: #c9d4d9;
+  --accent: #9a6514;
+  --accent-ink: #fff8ec;
+  --glow: rgba(214, 152, 62, .28);
+  --snow: rgba(40, 70, 85, .28);
+
+  --f-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --f-body: "Literata", Georgia, "Times New Roman", serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --step--1: .82rem;
+  --step-0: 1.02rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: clamp(2rem, 4.5vw, 2.8rem);
+  --step-4: clamp(2.5rem, 7vw, 4.6rem);
+  --wrap: 1120px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b161c; --surface: #11202a; --ink: #e5ecef; --muted: #93a5ad;
+    --line: #22353f; --accent: #e3a94e; --accent-ink: #1a1206;
+    --glow: rgba(227, 169, 78, .22); --snow: rgba(220, 235, 242, .55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b161c; --surface: #11202a; --ink: #e5ecef; --muted: #93a5ad;
+  --line: #22353f; --accent: #e3a94e; --accent-ink: #1a1206;
+  --glow: rgba(227, 169, 78, .22); --snow: rgba(220, 235, 242, .55);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.label {
+  font-family: var(--f-mono);
+  font-size: var(--step--1);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h1, h2, h3 { font-family: var(--f-display); font-weight: 500; line-height: 1.1; text-wrap: balance; margin: 0; }
+
+/* Header */
+.top { border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; flex-wrap: wrap; }
+.brand { font-family: var(--f-display); font-size: var(--step-1); letter-spacing: .02em; text-decoration: none; }
+.brand span { color: var(--accent); }
+.nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.nav a { font-family: var(--f-mono); font-size: var(--step--1); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
+.nav a:hover { color: var(--ink); }
+
+/* Free-book strip */
+.freebar { background: var(--surface); border-bottom: 1px solid var(--line); }
+.freebar .wrap { display: flex; align-items: center; gap: 18px; padding-block: 14px; flex-wrap: wrap; }
+.freebar img { width: 46px; height: 69px; object-fit: cover; border-radius: 2px; box-shadow: 0 6px 14px -6px rgba(10,25,32,.6); flex: none; }
+.freebar .fb-text { flex: 1 1 260px; min-width: 0; display: grid; gap: 2px; }
+.freebar .fb-text strong { font-family: var(--f-display); font-weight: 500; font-size: var(--step-1); }
+.freebar .fb-text span { color: var(--muted); font-size: .9rem; }
+.freebar .btn { padding: 10px 16px; font-size: .76rem; }
+.freebar[hidden] { display: none !important; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 56px; align-items: center; padding-block: 72px 80px; }
+.hero-copy { min-width: 0; display: grid; gap: 22px; }
+.vow {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: var(--step-4);
+  line-height: 1.02;
+  letter-spacing: -.01em;
+}
+.vow em { font-style: normal; color: var(--accent); }
+.hero p.lede { max-width: 34rem; color: var(--muted); font-size: var(--step-1); line-height: 1.55; margin: 0; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--f-mono); font-size: .86rem; letter-spacing: .08em; text-transform: uppercase;
+  padding: 13px 20px; border-radius: 2px; text-decoration: none; border: 1px solid var(--accent);
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { box-shadow: 0 0 0 6px var(--glow); }
+.btn-ghost { color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--accent); }
+.btn[aria-disabled="true"] { background: transparent; color: var(--muted); border-color: var(--line); border-style: dashed; cursor: default; box-shadow: none; }
+.fineprint { font-family: var(--f-mono); font-size: .76rem; letter-spacing: .06em; color: var(--muted); }
+.hero-book { min-width: 0; justify-self: center; width: min(320px, 100%); display: grid; gap: 14px; text-align: center; }
+
+/* Covers */
+.cover {
+  position: relative; width: 100%; max-width: 100%; aspect-ratio: 2 / 3; border-radius: 3px; overflow: hidden;
+  box-shadow: 0 1px 0 rgba(0,0,0,.05), 0 18px 40px -18px rgba(10, 25, 32, .55);
+}
+.cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cover.placeholder {
+  background:
+    radial-gradient(120% 70% at 50% 18%, hsla(var(--h), 70%, 62%, .55), transparent 60%),
+    linear-gradient(180deg, hsl(var(--h), 34%, 16%) 0%, hsl(var(--h), 40%, 7%) 100%);
+  color: #f3eee4; display: grid; grid-template-rows: auto 1fr auto; padding: 9% 8%; text-align: center;
+}
+.cover .c-series { font-family: var(--f-mono); font-size: clamp(.55rem, 1.6vw, .68rem); letter-spacing: .22em; text-transform: uppercase; opacity: .8; }
+.cover .c-lantern { place-self: center; width: 30%; aspect-ratio: 3 / 4; position: relative; }
+.cover .c-lantern::before { content: ""; position: absolute; inset: 0; border: 2px solid rgba(243,238,228,.7); border-radius: 40% 40% 12% 12% / 30% 30% 10% 10%; }
+.cover .c-lantern::after { content: ""; position: absolute; left: 30%; right: 30%; top: 30%; bottom: 22%; border-radius: 50%; background: hsla(42, 95%, 70%, .95); box-shadow: 0 0 28px 10px hsla(40, 95%, 60%, .55); }
+.cover.is-unlit .c-lantern::after { background: rgba(243,238,228,.12); box-shadow: none; }
+.cover .c-title { font-family: var(--f-display); font-style: italic; font-size: clamp(1.1rem, 3.6vw, 1.7rem); line-height: 1.1; }
+.cover .c-author { font-family: var(--f-mono); font-size: clamp(.55rem, 1.5vw, .66rem); letter-spacing: .24em; text-transform: uppercase; margin-top: 8px; opacity: .85; }
+
+/* Section heads */
+section { scroll-margin-top: 20px; }
+.section { padding-block: 84px; }
+.section-head { display: grid; gap: 12px; margin-bottom: 44px; max-width: 44rem; }
+.section-head h2 { font-size: var(--step-3); }
+.section-head p { margin: 0; color: var(--muted); }
+
+/* Book grid */
+.books { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px 36px; }
+.book { min-width: 0; display: grid; grid-template-rows: auto auto 1fr auto; gap: 16px; }
+.book-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.chip { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; padding: 4px 9px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); display: inline-flex; align-items: center; gap: 7px; }
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
+.chip.lit { color: var(--ink); border-color: var(--accent); }
+.chip.lit::before { background: var(--accent); box-shadow: 0 0 8px 2px var(--glow); }
+.book h3 { font-size: var(--step-2); }
+.book .couple { font-style: italic; color: var(--muted); margin: 4px 0 0; font-size: .95rem; }
+.book .blurb { margin: 0; }
+.tropes { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; margin: 0; padding: 0; }
+.tropes li { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .06em; color: var(--muted); }
+.tropes li::before { content: "· "; color: var(--accent); }
+.book .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.book .btn { padding: 11px 16px; font-size: .78rem; }
+
+/* Box sets */
+.boxsets { margin-top: 72px; border-top: 1px solid var(--line); padding-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.boxset { min-width: 0; display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; padding: 22px 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 3px; }
+.boxset h3 { font-size: var(--step-1); }
+.boxset p { margin: 4px 0 0; color: var(--muted); font-size: .92rem; }
+
+/* Promise strip */
+.promise { background: var(--surface); border-block: 1px solid var(--line); }
+.promise .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-block: 40px; }
+.promise div { min-width: 0; display: grid; gap: 6px; }
+.promise strong { font-family: var(--f-display); font-weight: 500; font-size: var(--step-1); }
+.promise span { color: var(--muted); font-size: .92rem; }
+
+/* Audiobooks */
+.audio { background: var(--surface); border-block: 1px solid var(--line); }
+.audio .wrap { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+.audio .section-head { margin-bottom: 0; }
+.wave { display: flex; align-items: center; gap: 4px; height: 44px; margin-top: 8px; }
+.wave i { width: 4px; border-radius: 2px; background: var(--accent); opacity: .75; }
+.tracks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.tracks li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) auto; gap: 16px; align-items: center; padding-block: 16px; border-bottom: 1px solid var(--line); }
+.tracks .t-num { font-family: var(--f-mono); font-size: var(--step--1); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.tracks .t-title { font-family: var(--f-display); font-size: var(--step-1); line-height: 1.2; min-width: 0; }
+.tracks .t-title small { display: block; font-family: var(--f-body); font-style: italic; font-size: .88rem; color: var(--muted); }
+.tracks .btn { padding: 9px 14px; font-size: .74rem; }
+@media (max-width: 900px) { .audio .wrap { grid-template-columns: 1fr; gap: 36px; } }
+@media (max-width: 560px) {
+  .tracks li { grid-template-columns: minmax(0, 1fr) auto; row-gap: 4px; }
+  .tracks .t-num { grid-column: 1 / -1; }
+}
+
+/* About + follow */
+.about .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+.about h2 { font-size: var(--step-3); margin-bottom: 18px; }
+.about p { max-width: 36rem; }
+.socials { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--line); }
+.socials li { border-bottom: 1px solid var(--line); }
+.socials a, .socials .soon { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-block: 16px; text-decoration: none; flex-wrap: wrap; }
+.socials .net { font-family: var(--f-display); font-size: var(--step-1); }
+.socials .handle { font-family: var(--f-mono); font-size: .82rem; color: var(--muted); }
+.socials a:hover .net { color: var(--accent); }
+
+footer { border-top: 1px solid var(--line); }
+footer .wrap { padding-block: 32px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: .85rem; }
+
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 44px; padding-block: 48px 60px; }
+  .hero-book { width: min(260px, 100%); }
+  .books { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .promise .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about .wrap { grid-template-columns: 1fr; gap: 40px; }
+  .boxsets { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .books { grid-template-columns: 1fr; gap: 48px; }
+  .book { grid-template-columns: 120px minmax(0, 1fr); grid-template-rows: auto; column-gap: 18px; align-items: start; }
+  .book .cover { grid-row: span 4; }
+  .section { padding-block: 60px; }
+  .nav { gap: 16px; }
+}
+</style>
+<style>html,body{margin:0;padding:0}</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" id="top">Kira <span>Ashvale</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#books">Books</a>
+      <a href="#audiobooks">Audiobooks</a>
+      <a href="#about">About</a>
+      <a href="#follow">Follow</a>
+    </nav>
+  </div>
+</header>
+
+<div class="freebar" id="freebar" hidden aria-label="Free book"></div>
+
+<section class="hero" aria-labelledby="hero-title">
+  <canvas id="snow" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="label">The Midwinter Packs · A Christmas werewolf romance series</span>
+      <h1 class="vow" id="hero-title">“Under the longest night, <em>I release you.”</em></h1>
+      <p class="lede">He rejected her in front of every pack in Silverbell. He'll spend the rest of the winter regretting it. Snowbound wolves, rejected mates, and alphas who have to earn it.</p>
+      <div class="cta-row" id="hero-cta"></div>
+      <span class="fineprint" id="hero-note"></span>
+    </div>
+    <div class="hero-book" id="hero-book"></div>
+  </div>
+</section>
+
+<div class="promise" aria-label="What every book promises">
+  <div class="wrap">
+    <div><strong>No cheating</strong><span>One couple per book, loyal to the end.</span></div>
+    <div><strong>HEA guaranteed</strong><span>Every book ends happy, every time.</span></div>
+    <div><strong>Read any first</strong><span>Each book stands alone in the same world.</span></div>
+    <div><strong>Adult readers</strong><span>Steamy, emotional, and closed to under-18s.</span></div>
+  </div>
+</div>
+
+<section class="section" id="books" aria-labelledby="books-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">Reading order</span>
+      <h2 id="books-title">The Midwinter Packs</h2>
+      <p>Five winters in Silverbell, Colorado. Each Yule Moon a new lantern lights on the Crown, and something under Glass Lake wakes a little more. Read in order for the full story.</p>
+    </div>
+    <div class="books" id="book-grid"></div>
+    <div class="boxsets" id="boxsets"></div>
+  </div>
+</section>
+
+<section class="section audio" id="audiobooks" aria-labelledby="audio-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">Audiobooks · Coming soon</span>
+      <h2 id="audio-title">Listen to the Midwinter Packs</h2>
+      <p>The whole series is coming to audio, so you can hear the rejection, the grovel and every snowbound night in between. Follow on YouTube to catch the first free chapter reading.</p>
+      <div class="wave" id="wave" aria-hidden="true"></div>
+    </div>
+    <ul class="tracks" id="audio-list"></ul>
+  </div>
+</section>
+
+<section class="section about" id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <div>
+      <span class="label">About the author</span>
+      <h2 id="about-title">Kira Ashvale</h2>
+      <p>Kira Ashvale writes paranormal romance for readers who want the rejection to hurt and the grovel to be worth it. Her wolves live in snowbound mountain towns where the packs keep old laws, the lanterns remember every bond, and the heroine always gets the final say.</p>
+      <p>The Midwinter Packs is her first series: five interconnected books, one per winter, each with its own couple and its own happy ending.</p>
+    </div>
+    <div id="follow">
+      <span class="label">Follow along</span>
+      <ul class="socials" id="social-list"></ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Kira Ashvale. All rights reserved.</span>
+    <span>Ebooks available on Google Play Books.</span>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   SITE DATA — the only part that changes when a book goes live.
+   status: "soon" (unlit lantern) or "live" (lit lantern)
+   play:   Google Play Books link
+   free:   Gumroad link (free download)
+   cover:  file path of the cover image published with the page
+   ===================================================================== */
+const BOOKS = [
+  {
+    num: "Book 1", season: "Winter, Year 1", title: "Book One", status: "soon",
+    couple: "Noelle & Rhys", hue: 200,
+    blurb: "The pack's lowest omega is rejected by the heir in front of every wolf in Silverbell. Then the most feared alpha in Colorado claims her, and the ice on Glass Lake starts to crack.",
+    tropes: ["Rejected mate", "Fated mates", "Hidden power"],
+    price: "Free", play: "", free: "", cover: "", date: "Coming November"
+  },
+  {
+    num: "Book 2", season: "Winter, Year 2", title: "Book Two", status: "soon",
+    couple: "Junie & Beck", hue: 14,
+    blurb: "He laughed when their lantern lit. She set the Crown on fire. Now the only wolf who can save her is the scarred warden sworn never to mate.",
+    tropes: ["Second-chance mate", "Forbidden", "Curvy heroine"],
+    price: "", play: "", free: "", cover: "", date: "Coming November"
+  },
+  {
+    num: "Novella 2.5", season: "Christmas Eve, Year 2", title: "Unlit", status: "live",
+    couple: "Clem & Abel", hue: 140,
+    blurb: "Three winters unlit. Then her lantern lights over the one man her family would never choose: the quiet Stray who delivers their cider, snowed in with her on Christmas Eve.",
+    tropes: ["Snowed in", "Christmas Eve", "Sweet novella"],
+    price: "Free", play: "", free: "https://kiraashvale1.gumroad.com/l/Unlit", cover: "cover-unlit.jpg", date: ""
+  },
+  {
+    num: "Book 3", season: "Winter, Year 3", title: "Book Three", status: "soon",
+    couple: "Pippa & Wade", hue: 46,
+    blurb: "She rejected him with a smile in front of everyone. Then fire took her home, and the grumpy hermit she turned down is the only one who opened his door.",
+    tropes: ["She rejects him", "Grumpy / sunshine", "Lone wolf"],
+    price: "", play: "", free: "", cover: "", date: "Coming November"
+  },
+  {
+    num: "Book 4", season: "Winter, Year 4", title: "Book Four", status: "soon",
+    couple: "Viv & Anders", hue: 262,
+    blurb: "The new Larkspur alpha rejected her for her family name. Now she's the witness who can bring her father down, and he's the one sworn to keep her alive.",
+    tropes: ["Enemies to lovers", "Rival packs", "Forbidden"],
+    price: "", play: "", free: "", cover: "", date: "Coming November"
+  },
+  {
+    num: "Book 5", season: "The Thaw, Year 4", title: "Book Five", status: "soon",
+    couple: "Tillie & Preston", hue: 352,
+    blurb: "Frozen in the lake for 137 years, she wakes beside the man who once threw away his mate. Rejecting him was easy. Trusting him might end the war.",
+    tropes: ["Redemption", "Villain's sister", "Out of time"],
+    price: "", play: "", free: "", cover: "", date: "Coming November"
+  }
+];
+
+const BOX_SETS = [
+  { title: "The Midwinter Packs: Books 1–3", note: "Three winters, three couples, one boxed set.", status: "soon", play: "" },
+  { title: "The Midwinter Packs: Books 4–5", note: "The pack war and the finale, plus Novella 2.5.", status: "soon", play: "" }
+];
+
+/* Audiobooks: set "link" to the store page when an audiobook goes live. */
+const AUDIOBOOKS = [
+  { num: "Book 1",      book: 0, link: "" },
+  { num: "Book 2",      book: 1, link: "" },
+  { num: "Novella 2.5", book: 2, link: "" },
+  { num: "Book 3",      book: 3, link: "" },
+  { num: "Book 4",      book: 4, link: "" },
+  { num: "Book 5",      book: 5, link: "" }
+];
+
+const SOCIALS = [
+  { net: "TikTok",    handle: "@kiraashvale.author", url: "https://www.tiktok.com/@kiraashvale.author" },
+  { net: "Instagram", handle: "@kiraashvale.author", url: "https://www.instagram.com/kiraashvale.author/" },
+  { net: "YouTube",   handle: "@kiraashvale.author", url: "https://www.youtube.com/@kiraashvale.author" },
+  { net: "Pinterest", handle: "Coming soon",         url: "" },
+  { net: "Gumroad",   handle: "Free books & store",  url: "https://kiraashvale1.gumroad.com/" }
+];
+/* ===================================================================== */
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function coverHTML(b) {
+  if (b.cover) {
+    return `<div class="cover"><img src="${esc(b.cover)}" alt="Cover of ${esc(b.title)} by Kira Ashvale" loading="lazy"></div>`;
+  }
+  return `<div class="cover placeholder ${b.status === "live" ? "" : "is-unlit"}" style="--h:${b.hue}" role="img" aria-label="${esc(b.title)} cover coming soon">
+    <span class="c-series">The Midwinter Packs · ${esc(b.num)}</span>
+    <span class="c-lantern"></span>
+    <span><span class="c-title">${esc(b.title)}</span><span class="c-author" style="display:block">Kira Ashvale</span></span>
+  </div>`;
+}
+
+function link(url, text, cls) {
+  return url
+    ? `<a class="btn ${cls}" href="${esc(url)}" target="_blank" rel="noopener">${text}</a>`
+    : `<span class="btn ${cls}" aria-disabled="true">${text}</span>`;
+}
+
+function bookActions(b) {
+  const out = [];
+  if (b.free) out.push(link(b.free, "Download free", "btn-primary"));
+  if (b.play) out.push(link(b.play, "Read on Google Play", b.free ? "btn-ghost" : "btn-primary"));
+  if (!out.length) out.push(link("", b.date || "Coming soon", "btn-primary"));
+  return out.join("");
+}
+
+function renderBooks() {
+  document.getElementById("book-grid").innerHTML = BOOKS.map(b => `
+    <article class="book">
+      ${coverHTML(b)}
+      <div>
+        <div class="book-meta">
+          <span class="label">${esc(b.num)} · ${esc(b.season)}</span>
+          <span class="chip ${b.status === "live" ? "lit" : ""}">${b.status === "live" ? (b.price ? esc(b.price) + " · Lit" : "Lit") : "Unlit"}</span>
+        </div>
+        <h3 style="margin-top:10px">${esc(b.title)}</h3>
+        <p class="couple">${esc(b.couple)}</p>
+      </div>
+      <div style="display:grid;gap:12px;align-content:start">
+        <p class="blurb">${esc(b.blurb)}</p>
+        <ul class="tropes">${b.tropes.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
+      </div>
+      <div class="actions">${bookActions(b)}</div>
+    </article>`).join("");
+
+  document.getElementById("boxsets").innerHTML = BOX_SETS.map(s => `
+    <div class="boxset">
+      <div><h3>${esc(s.title)}</h3><p>${esc(s.note)}</p></div>
+      ${link(s.play, s.play ? "Get the box set" : "Coming December", "btn-ghost")}
+    </div>`).join("");
+}
+
+function renderHero() {
+  const b = BOOKS[0];
+  document.getElementById("hero-book").innerHTML =
+    coverHTML(b) + `<span class="label">${esc(b.num)} · Start here</span>`;
+  const cta = [];
+  if (b.free) cta.push(link(b.free, "Get Book 1 free", "btn-primary"));
+  if (b.play) cta.push(link(b.play, "Google Play", b.free ? "btn-ghost" : "btn-primary"));
+  if (!cta.length) cta.push(link("", "Book 1 free · November", "btn-primary"));
+  cta.push(`<a class="btn btn-ghost" href="#books">See all five books</a>`);
+  document.getElementById("hero-cta").innerHTML = cta.join("");
+  document.getElementById("hero-note").textContent =
+    b.free || b.play ? "No cheating · HEA guaranteed · For adult readers" : "First lantern lights in November 2026. Follow below to catch launch day.";
+}
+
+function renderSocials() {
+  document.getElementById("social-list").innerHTML = SOCIALS.map(s => s.url
+    ? `<li><a href="${esc(s.url)}" target="_blank" rel="noopener"><span class="net">${esc(s.net)}</span><span class="handle">${esc(s.handle)}</span></a></li>`
+    : `<li><span class="soon"><span class="net">${esc(s.net)}</span><span class="handle">${esc(s.handle)}</span></span></li>`).join("");
+}
+
+function renderAudio() {
+  document.getElementById("audio-list").innerHTML = AUDIOBOOKS.map(a => {
+    const b = BOOKS[a.book];
+    return `<li>
+      <span class="t-num">${esc(a.num)}</span>
+      <span class="t-title">${esc(b.title)}<small>${esc(b.couple)}</small></span>
+      ${link(a.link, a.link ? "Listen" : "Coming soon", a.link ? "btn-primary" : "btn-ghost")}
+    </li>`;
+  }).join("");
+  const heights = [10, 22, 34, 18, 40, 28, 14, 36, 24, 44, 20, 30, 12, 38, 26, 16, 32, 22, 42, 18, 28, 10];
+  document.getElementById("wave").innerHTML = heights.map(h => `<i style="height:${h}px"></i>`).join("");
+}
+
+function renderFreebar() {
+  const free = BOOKS.filter(b => b.status === "live" && b.free);
+  const bar = document.getElementById("freebar");
+  if (!free.length) { bar.hidden = true; return; }
+  const b = free[free.length - 1];
+  bar.innerHTML = `<div class="wrap">
+    ${b.cover ? `<img src="${esc(b.cover)}" alt="">` : ""}
+    <div class="fb-text">
+      <span class="label">Free read · ${esc(b.num)}</span>
+      <strong>${esc(b.title)}: snowed in on Christmas Eve with a secret mate</strong>
+      <span>A sweet Midwinter Packs novella. Download it free, no strings.</span>
+    </div>
+    ${link(b.free, "Download free", "btn-primary")}
+  </div>`;
+  bar.hidden = false;
+}
+
+renderFreebar(); renderHero(); renderBooks(); renderAudio(); renderSocials();
+
+/* Quiet snowfall in the hero. Static flakes when motion is reduced. */
+(function snow() {
+  const c = document.getElementById("snow");
+  const ctx = c.getContext("2d");
+  if (!ctx) return;
+  const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let w, h, flakes = [], color;
+  function size() {
+    const r = c.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);
+    w = r.width; h = r.height; c.width = w * d; c.height = h * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+    color = getComputedStyle(document.documentElement).getPropertyValue("--snow").trim() || "rgba(200,220,230,.5)";
+    const n = Math.round(w * h / 9000);
+    flakes = Array.from({ length: n }, () => ({ x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.8 + .4, s: Math.random() * .35 + .15, d: Math.random() * Math.PI * 2 }));
+  }
+  function draw() {
+    ctx.clearRect(0, 0, w, h); ctx.fillStyle = color;
+    for (const f of flakes) { ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2); ctx.fill(); }
+  }
+  function tick() {
+    for (const f of flakes) { f.y += f.s; f.d += .01; f.x += Math.sin(f.d) * .2; if (f.y > h + 4) { f.y = -4; f.x = Math.random() * w; } }
+    draw(); requestAnimationFrame(tick);
+  }
+  size(); draw();
+  window.addEventListener("resize", () => { size(); draw(); });
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", () => { size(); draw(); });
+  if (!still) requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>
