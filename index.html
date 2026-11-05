@@ -277,6 +277,22 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
   .join-cover { flex-direction: column; align-items: flex-start; gap: 20px; }
   .join-cover img { width: 110px; }
 }
+
+/* Beyond the Books: companion journals and activity books */
+.extras { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 28px; }
+.extra { min-width: 0; display: grid; grid-template-rows: auto auto auto 1fr auto; gap: 14px; }
+.extra .cover.placeholder { aspect-ratio: 3 / 4; }
+.extra .c-motif { place-self: center; font-family: var(--f-display); font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1; opacity: .9; }
+.extra h3 { font-size: var(--step-1); }
+.extra .kind { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.extra p { margin: 0; color: var(--muted); font-size: .95rem; }
+.extra ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.extra li { font-size: .9rem; }
+.extra li::before { content: "· "; color: var(--accent); }
+.extra .actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.extra .btn { padding: 11px 16px; font-size: .76rem; }
+@media (max-width: 1000px) { .extras { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .extras { grid-template-columns: minmax(0, 1fr); } .extra .cover.placeholder { max-width: 260px; } }
 </style>
 <style>html,body{margin:0;padding:0}</style>
 </head>
@@ -288,6 +304,7 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
     <nav class="nav" aria-label="Sections">
       <a href="#books">Books</a>
       <a href="#audiobooks">Audiobooks</a>
+      <a href="#extras">Extras</a>
       <a href="#join">Free book</a>
       <a href="#about">About</a>
       <a href="#follow">Follow</a>
@@ -341,6 +358,17 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
       <div class="wave" id="wave" aria-hidden="true"></div>
     </div>
     <ul class="tracks" id="audio-list"></ul>
+  </div>
+</section>
+
+<section class="section" id="extras" aria-labelledby="extras-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">Beyond the books · Coming soon</span>
+      <h2 id="extras-title">Stay in Silverbell a little longer</h2>
+      <p>Companion books for readers who finish a story and aren't ready to leave: puzzles from the valley, a journal for choosing yourself, and planners that follow the Midwinter moons. Join the list to hear the moment each one is out.</p>
+    </div>
+    <div class="extras" id="extras-grid"></div>
   </div>
 </section>
 
@@ -480,6 +508,34 @@ const AUDIOBOOKS = [
   { num: "Book 5",      book: 5, link: "" }
 ];
 
+/* Companion books. status: "soon" or "live"; link: Gumroad / Google Play URL when live */
+const EXTRAS = [
+  {
+    title: "The Midwinter Packs Puzzle & Activity Book", kind: "Puzzles & coloring", status: "soon", link: "", price: "",
+    hue: 205, motif: "❖",
+    blurb: "A trip back to Silverbell for adult fans of the series.",
+    inside: ["Word searches & crosswords from the books", "Which pack are you? quiz", "Lantern mazes & logic puzzles", "Wolf & winter coloring pages"]
+  },
+  {
+    title: "Choose Yourself", kind: "Guided journal", status: "soon", link: "", price: "",
+    hue: 32, motif: "✶",
+    blurb: "A personal-growth journal shaped by the heroines' journey from rejected to unstoppable.",
+    inside: ["30 prompts on worth, boundaries & letting go", "A lantern ritual for each new moon", "Rewrite-the-story exercises", "Space for the life you choose"]
+  },
+  {
+    title: "The Romance Reader's Journal", kind: "Reading journal", status: "soon", link: "", price: "",
+    hue: 340, motif: "♥",
+    blurb: "Track every rejected mate, grovel and happily-ever-after you read.",
+    inside: ["Trope bingo cards", "Spice, angst & grovel ratings", "Book-boyfriend pages", "TBR lists & yearly reading stats"]
+  },
+  {
+    title: "Under the Midwinter Moons", kind: "Self-care planner", status: "soon", link: "", price: "",
+    hue: 255, motif: "☾",
+    blurb: "A 12-month planner that follows the moon calendar of the Midwinter Packs.",
+    inside: ["Monthly moon pages, Yule Moon to Snow Moon", "Habit, mood & sleep trackers", "Reflection prompts for each moon", "Goal-setting for the year ahead"]
+  }
+];
+
 const SOCIALS = [
   { net: "TikTok",    handle: "@kiraashvale.author", url: "https://www.tiktok.com/@kiraashvale.author" },
   { net: "Instagram", handle: "@kiraashvale.author", url: "https://www.instagram.com/kiraashvale.author/" },
@@ -562,6 +618,27 @@ function renderSocials() {
     : `<li><span class="soon"><span class="net">${esc(s.net)}</span><span class="handle">${esc(s.handle)}</span></span></li>`).join("");
 }
 
+function renderExtras() {
+  document.getElementById("extras-grid").innerHTML = EXTRAS.map(x => {
+    const live = x.status === "live" && x.link;
+    const cover = `<div class="cover placeholder ${live ? "" : "is-unlit"}" style="--h:${x.hue}" role="img" aria-label="${esc(x.title)} cover">
+      <span class="c-series">Kira Ashvale · ${esc(x.kind)}</span>
+      <span class="c-motif" aria-hidden="true">${x.motif}</span>
+      <span><span class="c-title">${esc(x.title)}</span></span>
+    </div>`;
+    const action = live
+      ? link(x.link, x.price ? `Get it · ${esc(x.price)}` : "Get it", "btn-primary")
+      : `<a class="btn btn-ghost" href="#join">Notify me</a>`;
+    return `<article class="extra">
+      ${cover}
+      <span class="kind">${esc(x.kind)} · ${live ? "Available now" : "Coming soon"}</span>
+      <h3>${esc(x.title)}</h3>
+      <div style="display:grid;gap:10px;align-content:start"><p>${esc(x.blurb)}</p><ul>${x.inside.map(i => `<li>${esc(i)}</li>`).join("")}</ul></div>
+      <div class="actions">${action}</div>
+    </article>`;
+  }).join("");
+}
+
 function renderAudio() {
   document.getElementById("audio-list").innerHTML = AUDIOBOOKS.map(a => {
     const b = BOOKS[a.book];
@@ -592,7 +669,7 @@ function renderFreebar() {
   bar.hidden = false;
 }
 
-renderFreebar(); renderHero(); renderBooks(); renderAudio(); renderSocials();
+renderFreebar(); renderHero(); renderBooks(); renderAudio(); renderExtras(); renderSocials();
 
 /* Quiet snowfall in the hero. Static flakes when motion is reduced. */
 (function snow() {
