@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /thanks.html
 
-Sitemap: https://kiraashvale.netlify.app/sitemap.xml
+Sitemap: https://kiraashvale.pages.dev/sitemap.xml

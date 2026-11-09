@@ -1,2 +1,14 @@
 [build]
   publish = "."
+
+# The site moved to Cloudflare Pages on 9 Nov 2026. Send old links there.
+[[redirects]]
+  from = "/google1bac6dd615f1e475.html"
+  to = "/google1bac6dd615f1e475.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "https://kiraashvale.pages.dev/:splat"
+  status = 301
+  force = true
