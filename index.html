@@ -453,11 +453,11 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
    ===================================================================== */
 const BOOKS = [
   {
-    num: "Book 1", season: "Winter, Year 1", title: "Book One", status: "soon",
+    num: "Book 1", season: "Winter, Year 1", title: "Unwanted", status: "live",
     couple: "Noelle & Rhys", hue: 200,
     blurb: "The pack's lowest omega is rejected by the heir in front of every wolf in Silverbell. Then the most feared alpha in Colorado claims her, and the ice on Glass Lake starts to crack.",
     tropes: ["Rejected mate", "Fated mates", "Hidden power"],
-    price: "Free", play: "", free: "", cover: "", date: "Coming November"
+    price: "Free", play: "https://play.google.com/store/books/details?id=xxQqEgAAQBAJ", free: "", cover: "cover-unwanted.jpg", date: ""
   },
   {
     num: "Book 2", season: "Winter, Year 2", title: "Book Two", status: "soon",
@@ -607,7 +607,7 @@ function renderHero() {
     coverHTML(b) + `<span class="label">${esc(b.num)} · Start here</span>`;
   const cta = [];
   if (b.free) cta.push(link(b.free, "Get Book 1 free", "btn-primary"));
-  if (b.play) cta.push(link(b.play, "Google Play", b.free ? "btn-ghost" : "btn-primary"));
+  if (b.play) cta.push(link(b.play, b.free ? "Google Play" : "Read Book 1 free on Google Play", b.free ? "btn-ghost" : "btn-primary"));
   if (!cta.length) cta.push(link("", "Book 1 free · November", "btn-primary"));
   cta.push(`<a class="btn btn-ghost" href="#books">See all five books</a>`);
   document.getElementById("hero-cta").innerHTML = cta.join("");
