@@ -354,7 +354,7 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
     <div class="section-head">
       <span class="label">Audiobooks · Coming soon</span>
       <h2 id="audio-title">Listen to the Midwinter Packs</h2>
-      <p>The whole series is coming to audio, so you can hear the rejection, the grovel and every snowbound night in between. Follow on YouTube to catch the first free chapter reading.</p>
+      <p>Book 1 is out now in audio on Google Play. The rest of the series is on its way, so you can hear the rejection, the grovel and every snowbound night in between.</p>
       <div class="wave" id="wave" aria-hidden="true"></div>
     </div>
     <ul class="tracks" id="audio-list"></ul>
@@ -503,7 +503,7 @@ const BOX_SETS = [
 
 /* Audiobooks: set "link" to the store page when an audiobook goes live. */
 const AUDIOBOOKS = [
-  { num: "Book 1",      book: 0, link: "" },
+  { num: "Book 1",      book: 0, link: "https://play.google.com/store/audiobooks/details?id=AQAAAEDGXnoerM" },
   { num: "Book 2",      book: 1, link: "" },
   { num: "Novella 2.5", book: 2, link: "" },
   { num: "Book 3",      book: 3, link: "" },
@@ -648,7 +648,7 @@ function renderAudio() {
     return `<li>
       <span class="t-num">${esc(a.num)}</span>
       <span class="t-title">${esc(b.title)}<small>${esc(b.couple)}</small></span>
-      ${link(a.link, a.link ? "Listen" : "Coming soon", a.link ? "btn-primary" : "btn-ghost")}
+      ${link(a.link, a.link ? "Listen on Google Play" : "Coming soon", a.link ? "btn-primary" : "btn-ghost")}
     </li>`;
   }).join("");
   const heights = [10, 22, 34, 18, 40, 28, 14, 36, 24, 44, 20, 30, 12, 38, 26, 16, 32, 22, 42, 18, 28, 10];
